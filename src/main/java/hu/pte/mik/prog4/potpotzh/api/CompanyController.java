@@ -67,10 +67,14 @@ public class CompanyController {
     @Path("/{id}/getdata")
     public Response getCompanyData(@PathParam("id") Long id){
         try{
-            CompanyEntity companyResponse = this.companyService.findById(id);
+            // A request objektum felépítése a WS-hez
+            hu.pte.mik.prog4.potpotzh.ws.CompanyRequest req = new hu.pte.mik.prog4.potpotzh.ws.CompanyRequest();
+            req.setCompanyId(String.valueOf(id)); // Vagy String.valueOf(id), attól függően, mit vár a generált WS osztály
+
+            // Itt a Service WS-t meghívó metódusát használjuk!
+            hu.pte.mik.prog4.potpotzh.ws.CompanyResponse companyResponse = this.companyService.getCompanyData(req);
 
             return Response.status(Response.Status.OK).entity(companyResponse).build();
-
 
         } catch (Exception e){
             e.printStackTrace();
