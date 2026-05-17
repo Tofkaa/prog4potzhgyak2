@@ -61,7 +61,7 @@ public class CompanyRepository extends Repository{
 
     private CompanyEntity create(CompanyEntity entity) {
         try(Connection connection = this.getConnection();
-        PreparedStatement stmt = connection.prepareStatement("INSERT INTO technologiai_ceg (nev, alapitasi_ev, orszag, ismert_termek) VALIUES (?, ?, ?, ?)",
+        PreparedStatement stmt = connection.prepareStatement("INSERT INTO technologiai_ceg (nev, alapitasi_ev, orszag, ismert_termek) VALUES (?, ?, ?, ?)",
                 Statement.RETURN_GENERATED_KEYS)){
 
             stmt.setString(1,entity.getCompanyName());
