@@ -85,6 +85,8 @@ public class CompanyRepository extends Repository{
             stmt.setString(3,entity.getCountry());
             stmt.setString(4,entity.getKnownProducts());
 
+            stmt.setLong(5,entity.getId());
+
             stmt.executeUpdate();
 
             return this.findById(entity.getId());
